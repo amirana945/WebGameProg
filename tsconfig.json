@@ -1,7 +1,16 @@
 {
-    "compilerOptions":{
-        "allowJs": true,
-        "target": "es5",
-        "outDir": "./built"
-    }
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es5", "es6", "dom"],
+    "sourceMap": true,
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "./src/globals.d.ts",
+    "./src/app.ts",
+    "./node_modules/phaser-ce/typescript/phaser.comments.d.ts"
+  ]
 }
