@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Darwin</title>
+<script src="lib/easeljs-NEXT.combined.js"></script>
+ <script src="lib/tweenjs-NEXT.min.js"></script>
+  <script src="lib/soundjs-NEXT.min.js"></script>
+   <script src="lib/preloadjs-NEXT.min.js"></script>
+     <script src="Main.js"></script>
+<style>
+	
+	body {
+		background-color:#fff;
+			
+	}
+	#mainb{
+		max-width:900px;
+		margin:0 auto;
+		
+	}
+	#gamew{
+		-webkit-tap-highlight-color: transparent;
+	}	
+	#ploader{
+	margin:0 auto;
+	text-align:center;
+	position:relative;
+	font-size:34px;
+	top:200px;
+	
+	}					
+</style>
+</head>
+
+<body onload= "Main()">
+<div id ="mainb">
+<div id ="ploader"></div>
+<canvas id="gamew" width="900" height="600" style="width:100%">Wait while loading:.</canvas>
+</div>
+
+</body>
+</html>
