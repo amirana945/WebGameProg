@@ -1,8 +1,4 @@
 # TypeScriptMonkeyGame
-HTML 5 arcade shooter game with a cute setting, developed with TypeScript and phaser.
-
-Project used [this starter boilerplate](https://github.com/rroylance/phaser-npm-webpack-typescript-starter-project)
-
 ## Setup
 
 `npm install`
