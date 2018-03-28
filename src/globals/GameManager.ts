@@ -18,8 +18,8 @@ export default class GameManager {
   public waveSpritesTween: Phaser.Tween
 
   
-  public scoreValue: number
-  public currentLevelNum: number
+  public scoreValue: number = 0
+  public currentLevelNum: number = 0
   readonly RESTART_KEY_DELAY: number = 1000
 
   constructor() {
@@ -50,12 +50,18 @@ export default class GameManager {
     //this.waveSpritesText.visible = false
   }
 
-
+  /**
+   * Store in graveyard. Clear the graveyard in the next frame,
+   * this essentially acts as a mark for delete mechanism
+   * @param {Phaser.Sprite} object - A sprite, i.e. enemy or player
+   */
   public buryInGraveyard(object: Phaser.Sprite): void {
     this.graveyard.push(object)
   }
 
-
+  /**
+   * Call destroy on buried objects and reset graveyard
+   */
   public clearGraveyard(): void {
     if (this.graveyard && this.graveyard.length === 0) {
       return

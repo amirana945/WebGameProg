@@ -6,12 +6,13 @@ export default class Gameover extends Phaser.State {
   private sfxAudiosprite: Phaser.AudioSprite = null
   private startKey: Phaser.Key
 
-  
+  // This is any[] not string[] due to a limitation in TypeScript at the moment;
+  // despite string enums working just fine, they are not officially supported so we trick the compiler into letting us do it anyway.
   private sfxLaserSounds: any[] = null
 
   public create(): void {
     this.game.stage.backgroundColor = '#071924'
-    const bgImg = Assets.Images.ImagesCyberpunkFarEdit3.getName()
+    const bgImg = Assets.Images.ImageJungleBackground.getName()
     this.backgroundTemplateSprite = this.game.add.tileSprite(0,
       this.game.height - this.game.cache.getImage(bgImg).height,
       this.game.width,
@@ -37,7 +38,7 @@ export default class Gameover extends Phaser.State {
     gameOverText.anchor.setTo(0.5, 0.5)
     this.game.add.existing(gameOverText)
 
-    this.game.add.button(this.game.world.centerX -100 , this.game.world.centerY + 100, Assets.Images.SpritesheetsTryagain2.getName(), this.goNext, this, 2, 1, 0)
+    this.game.add.button(this.game.world.centerX , this.game.world.centerY + 100, Assets.Images.SpritesheetsTryagain2.getName(), this.goNext, this, 2, 1, 0)
 
     this.backgroundTemplateSprite.inputEnabled = true;
     this.backgroundTemplateSprite.events.onInputDown.add(() => {

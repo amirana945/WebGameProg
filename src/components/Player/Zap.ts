@@ -3,6 +3,14 @@ import {Shaders} from '../../assets'
 export default class Zap extends Phaser.Sprite {
   private _uniforms: any
 
+  /**
+   * A self-destructing zap effect
+   * @param {Phaser.Game} game
+   * @param {Phaser.Sprite} parent - The sprite by which this effect is placed
+   * @param {number} radius - The circular radius of the effect
+   * @param {number[]} firstColor - One of the colors for the effect
+   * @param {number[]} secondColor - One of the colors for the effect
+   */
   constructor(game: Phaser.Game, parent: Phaser.Sprite, radius: number, firstColor: number[], secondColor: number[]) {
     super(game, null, null, null)
 

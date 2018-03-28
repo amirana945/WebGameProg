@@ -69,7 +69,7 @@ export default class Enemy extends Phaser.Sprite {
     if (this.alive) {
       this.attackStrategy.attack(this.weaponWeak, this.weaponStrong, this.timer)
 
-
+      // Fix failed filters
       const weakBullets = this.weaponWeak.bullets
       const strongBullets = this.weaponStrong.bullets
       weakBullets.forEach(bullet => {
@@ -85,17 +85,26 @@ export default class Enemy extends Phaser.Sprite {
     }
   }
 
-
+  /**
+   * Spawn object into game
+   * Not needed to call if object added to a group
+   */
   public spawn(): void {
     this.game.add.existing(this)
   }
 
-
+  /**
+   * Expose weak bullets group
+   * @returns {Phaser.Group}
+   */
   public getWeakBullets(): Phaser.Group {
     return this.weaponWeak.bullets
   }
 
-  
+  /**
+   * Expose strong bullets group
+   * @returns {Phaser.Group}
+   */
   public getStrongBullets(): Phaser.Group {
     return this.weaponStrong.bullets
   }

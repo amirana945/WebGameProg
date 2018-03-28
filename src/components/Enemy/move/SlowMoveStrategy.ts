@@ -24,7 +24,7 @@ export default class SlowMoveStrategy implements IMoveStrategy {
       props = {y: enemy.body.position.y - 300}
     }
 
-    
+    // Truncate to fit world
     props.y = props.y > game.height - 5 ? game.height - 5 : props.y
     props.y = props.y < 5 ? 5 : props.y
 

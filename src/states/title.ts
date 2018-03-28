@@ -7,11 +7,13 @@ export default class Title extends Phaser.State {
   private startKey: Phaser.Key
   private aboutInfo: string[]
 
+  // This is any[] not string[] due to a limitation in TypeScript at the moment;
+  // despite string enums working just fine, they are not officially supported so we trick the compiler into letting us do it anyway.
   private sfxLaserSounds: any[] = null
 
   public create(): void {
     this.game.stage.backgroundColor = '#071924'
-    const bgImg = Assets.Images.ImagesCyberpunkFarEdit3.getName()
+    const bgImg = Assets.Images.ImageJungleBackground.getName()
     this.backgroundTemplateSprite = this.game.add.tileSprite(0,
       this.game.height - this.game.cache.getImage(bgImg).height,
       this.game.width,
@@ -21,10 +23,11 @@ export default class Title extends Phaser.State {
 
     // About text
     this.aboutInfo = [
-      '\" Ballos Bananas\"',
-      '  By Gameindustri',
+      '\"TypescriptMonkey\"',
+      '  By Valentyn 2018',
       '  Background Art - Free Resource',
       '  Monkey and others - Free Resource',
+      '  Developed with Phaser CE'
     ]
 
     const startY = (this.game.world.height - this.aboutInfo.length * 10) - 20
@@ -39,7 +42,7 @@ export default class Title extends Phaser.State {
     this.startKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
     this.sfxAudiosprite = this.game.add.audioSprite(Assets.Audiosprites.AudiospritesSfx.getName())
 
-    
+    // This is an example of how you can lessen the verbosity
     let availableSFX = Assets.Audiosprites.AudiospritesSfx.Sprites
     this.sfxLaserSounds = [
       availableSFX.Laser1,
@@ -58,9 +61,9 @@ export default class Title extends Phaser.State {
       this.sfxAudiosprite.play(Phaser.ArrayUtils.getRandomItem(this.sfxLaserSounds))
     });
 
-    this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 180, Assets.Images.SpritesheetsStartgame2.getName(), this.goNext, this, 2, 1, 0)
-    this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY - 40, Assets.Images.SpritesheetsInstruction.getName(), this.goInstruction, this, 2, 1, 0)
-    this.game.add.button(this.game.world.centerX - 100, this.game.world.centerY + 100, Assets.Images.SpritesheetsCredit.getName(), this.goCredit, this, 2, 1, 0)
+    this.game.add.button(this.game.world.centerX, this.game.world.centerY - 80, Assets.Images.SpritesheetsStartgame2.getName(), this.goNext, this, 2, 1, 0)
+    this.game.add.button(this.game.world.centerX, this.game.world.centerY - 0, Assets.Images.SpritesheetsInstruction.getName(), this.goInstruction, this, 2, 1, 0)
+    this.game.add.button(this.game.world.centerX, this.game.world.centerY + 80, Assets.Images.SpritesheetsCredit.getName(), this.goCredit, this, 2, 1, 0)
     this.game.camera.flash(0x000000, 1000)
   }
 
@@ -72,7 +75,7 @@ export default class Title extends Phaser.State {
 
   private goNext(): void {
     GameManager.Instance.currentLevelNum = 1 
-    this.game.state.start('levelone')
+    this.game.state.start('levelone')//('leveltwo')//('levelthree')//('levelone')
     //this.game.state.start('intro')
   }
   private goInstruction(): void {

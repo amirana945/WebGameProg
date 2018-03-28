@@ -26,6 +26,7 @@ export default class DumbMoveStrategy implements IMoveStrategy {
     let secondX = enemy.body.position.x + randomInRange(0, 100)
     let secondY = randomInRange(5, game.height - 5)
 
+    // Truncate to fit world
     firstY = firstY > game.height - 5 ? game.height - 5 : firstY
     secondY = secondY > game.height - 5 ? game.height - 5 : secondY
     firstY = firstY < 5 ? 5 : firstY

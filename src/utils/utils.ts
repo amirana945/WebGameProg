@@ -1,3 +1,12 @@
+/*
+    The Screen[...] classes are modified versions of the classes in an article I found.
+
+    Author: Tomáš Rychnovský
+    Article: http://sbcgamesdev.blogspot.ca/2015/04/phaser-tutorial-manage-different-screen.html
+    Date: Thursday, April 9, 2015
+
+    Big thanks to Tomáš!
+ */
 
 export enum ScreenOrientation {
     PORTRAIT,
@@ -28,7 +37,13 @@ export class ScreenUtils {
     public static screenMetrics: ScreenMetrics;
 
     public static calculateScreenMetrics(defaultWidth: number, defaultHeight: number, orientation: ScreenOrientation = ScreenOrientation.LANDSCAPE, maxGameWidth?: number, maxGameHeight?: number): ScreenMetrics {
-       
+        // Just to give some explanation as to the numbers and colors in the included background;
+        // The GREEN is the safe area and will be displayed fully on any device and is based on 16:10 aspect ratio, build your actual gameplay here
+        // The YELLOW is the extra area that will be visible on devices with a 3:2 aspect ratio (iPhone 4S and below)
+        // The BLUE is the extra area that will be visible on devices with a 4:3 aspect ratio (iPads)
+        // The RED is the extra area that will be visible on devices with a 16:9 aspect ratio (iPhone 5 and above) (this is probably the most common ratio overall...)
+        // The GREY area will most likely never be seen, unless some device has a really odd aspect ratio (and with Android, I wouldn't be surprised if there is a few out there)
+
         this.screenMetrics = new ScreenMetrics();
 
         this.screenMetrics.windowWidth = window.innerWidth;

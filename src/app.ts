@@ -9,12 +9,14 @@ import Preloader from './states/preloader'
 import Title from './states/title'
 import LevelOne from './states/levels/levelone'
 import LevelTwo from './states/levels/leveltwo'
+import LevelThree from './states/levels/levelthree'
 import Intro from './states/levels/intro'
 import * as Utils from './utils/utils'
 import * as Assets from './assets'
 import Win from './states/win'
 import Gameover from './states/gameover'
-
+//import EnemyBulletTexture from './utils/texrender/enemybullet'
+//import GameManager from './globals/GameManager'
 
 class App extends Phaser.Game {
     constructor(config: Phaser.IGameConfig) {
@@ -25,9 +27,10 @@ class App extends Phaser.Game {
         this.state.add('title', Title)
         this.state.add('intro', Intro)
         this.state.add('win', Win)
-        this.state.add('Gameover', Gameover)
+        this.state.add('Gameover',Gameover)
         this.state.add('levelone', LevelOne)
         this.state.add('leveltwo', LevelTwo)
+        this.state.add('levelthree', LevelThree)
         this.state.start('boot')
     }
 }
@@ -43,7 +46,7 @@ function startApp(): void {
         gameHeight = screenMetrics.gameHeight
     }
 
-    
+    // There are a few more options you can set if needed, just take a look at Phaser.IGameConfig
     let gameConfig: Phaser.IGameConfig = {
         width: gameWidth,
         height: gameHeight,
@@ -83,10 +86,10 @@ window.onload = () => {
     }
 
     if (webFontLoaderOptions === null) {
-        
+        // Just start the game, we don't need any additional fonts
         startApp()
     } else {
-        
+        // Load the fonts defined in webFontsToLoad from Google Web Fonts, and/or any Local Fonts then start the game knowing the fonts are available
         webFontLoaderOptions.active = startApp
 
         WebFontLoader.load(webFontLoaderOptions)

@@ -14,7 +14,7 @@ export default class EnemyBullet extends Phaser.Bullet {
 
   public update(): void {
 
-    
+    // Manual bullet destroy on bounds hit
     if (checkOnOrOutOfBounds(this.body, this.game)) {
       this.destroy()
     }
