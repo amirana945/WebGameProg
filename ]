@@ -1,0 +1,4 @@
+
+> monkeygame@0.0.1 setupGameSize C:\Users\amirana\Desktop\webGameProgramming-master
+> node ./scripts/setupGameSize.js "--width" "[800]" "--height" "[500]" "--scale-mode[" "C:\Users\amirana\Desktop\webGameProgramming-master"
+

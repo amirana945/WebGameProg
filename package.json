@@ -24,7 +24,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "Arun Amit Amar Ronell Julian Ranjana",
+  "author": "Jonathan Grangien <jonathan.grangien@gmail.com>",
   "devDependencies": {
     "@types/node": "8.0.17",
     "@types/webfontloader": "^1.6.29",
