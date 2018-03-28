@@ -35,6 +35,13 @@ void main() {
             return;
         }
 
+        //
+        //
+        //     c   ---|
+        //      ---   |  a
+        //  _==_______|
+        //      b
+        //
         float a = abs(uv.y - 0.5);
         float b = abs(uv.x - 0.5);
         float c = sqrt((a * a) + (b * b));

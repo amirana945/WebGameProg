@@ -6,7 +6,11 @@ uniform vec2 u_screenSize;
 uniform float u_radius;
 uniform float u_time;
 
-
+// Cellular noise ("Worley noise") in 2D in GLSL.
+// Copyright (c) Stefan Gustavson 2011-04-19. All rights reserved.
+// This code is released under the conditions of the MIT license.
+// See LICENSE file for details.
+// https://github.com/stegu/webgl-noise
 
 // Modulo 289 without a division (only multiplications)
 vec2 mod289(vec2 x) {
@@ -35,7 +39,12 @@ vec3 permute(vec3 x) {
   return mod289(((x*34.0)+1.0)*x);
 }
 
-
+// Cellular noise, returning F1 and F2 in a vec2.
+// Speeded up by using 2x2 search window instead of 3x3,
+// at the expense of some strong pattern artifacts.
+// F2 is often wrong and has sharp discontinuities.
+// If you need a smooth F2, use the slower 3x3 version.
+// F1 is sometimes wrong, too, but OK for most purposes.
 vec2 cellular2x2(vec2 P) {
 #define K 0.142857142857 // 1/7
 #define K2 0.0714285714285 // K/2
@@ -68,7 +77,16 @@ vec2 cellular2x2(vec2 P) {
 #endif
 }
 
-
+//
+// Description : Array and textureless GLSL 2D simplex noise function.
+//      Author : Ian McEwan, Ashima Arts.
+//  Maintainer : stegu
+//     Lastmod : 20110822 (ijm)
+//     License : Copyright (C) 2011 Ashima Arts. All rights reserved.
+//               Distributed under the MIT License. See LICENSE file.
+//               https://github.com/ashima/webgl-noise
+//               https://github.com/stegu/webgl-noise
+//
 float snoise(vec2 v)
   {
   const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
