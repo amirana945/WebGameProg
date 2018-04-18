@@ -23,8 +23,11 @@ export default class Title extends Phaser.State {
 
     // About text
     this.aboutInfo = [
-      '\"Baloo`s Bananas!\"',
-      '  By Gamindustri'      
+      '\"TypescriptMonkey\"',
+      '  By Valentyn 2018',
+      '  Background Art - Free Resource',
+      '  Monkey and others - Free Resource',
+      '  Developed with Phaser CE'
     ]
 
     const startY = (this.game.world.height - this.aboutInfo.length * 10) - 20
