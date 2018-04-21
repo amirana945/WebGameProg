@@ -24,10 +24,10 @@ export default class Title extends Phaser.State {
     // About text
     this.aboutInfo = [
       '\"TypescriptMonkey\"',
-      '  By Valentyn 2018',
+      '  By Balloo\'\s Bananas, ',
       '  Background Art - Free Resource',
       '  Monkey and others - Free Resource',
-      '  Developed with Phaser CE'
+      '  @Copyright'
     ]
 
     const startY = (this.game.world.height - this.aboutInfo.length * 10) - 20
@@ -62,8 +62,8 @@ export default class Title extends Phaser.State {
     });
 
     this.game.add.button(this.game.world.centerX, this.game.world.centerY - 80, Assets.Images.SpritesheetsStartgame2.getName(), this.goNext, this, 2, 1, 0)
-    this.game.add.button(this.game.world.centerX, this.game.world.centerY - 0, Assets.Images.SpritesheetsInstruction.getName(), this.goInstruction, this, 2, 1, 0)
-    this.game.add.button(this.game.world.centerX, this.game.world.centerY + 80, Assets.Images.SpritesheetsCredit.getName(), this.goCredit, this, 2, 1, 0)
+    //this.game.add.button(this.game.world.centerX, this.game.world.centerY - 0, Assets.Images.SpritesheetsInstruction.getName(), this.goInstruction, this, 2, 1, 0)
+    //this.game.add.button(this.game.world.centerX, this.game.world.centerY + 80, Assets.Images.SpritesheetsCredit.getName(), this.goCredit, this, 2, 1, 0)
     this.game.camera.flash(0x000000, 1000)
   }
 
