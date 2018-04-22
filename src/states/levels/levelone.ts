@@ -11,7 +11,7 @@ import {randomYPos, randomXPos} from '../../utils/gamehelpers'
 import { Sprite, Sound, AudioSprite, Image } from 'phaser-ce';
 export default class LevelOne extends Phaser.State {
   
-  readonly FEEDS_CNT = 15
+  readonly FEEDS_CNT = 10
   readonly TIME_LMT = 50
   readonly TILE_CNT = 6
   private intervalFunc = null

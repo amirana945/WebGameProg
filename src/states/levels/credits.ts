@@ -1,7 +1,7 @@
 import {Images} from '../../assets'
 import GameAdapter from '../../globals/GameAdapter'
 
-export default class Intro extends Phaser.State {
+export default class Credits extends Phaser.State {
   private bgBack: any
   private bgMid: any
   private textContent: string[]
@@ -9,7 +9,7 @@ export default class Intro extends Phaser.State {
   private characterHead: Phaser.Sprite
   private textObject: any
   private gameAdapter: GameAdapter
-  private countdownNumber: number
+  //private countdownNumber: number
   private startLevelCounter: any
   private skipKey: Phaser.Key
 
@@ -23,14 +23,17 @@ export default class Intro extends Phaser.State {
     this.gameAdapter = new GameAdapter()
     this.lineIndex = 0
     this.wordIndex = 0
-    this.countdownNumber = 10
+    //this.countdownNumber = 3
 
-    this.textContent = [
-      '"Baloo`s Bananas"',
-      '',
-      'Objective:',
-      'Monkey has to collect the bananas while avoiding obstacles.',
-      '',
+    this.textContent = [      
+      'Ballo`s Bananas',
+      'Developed by Gamindustri:',
+      '   Ranjana - Production Manager',
+      '   Amit - Art Designer',
+      '   Amar- Game Designer',
+      '   Juilan - Sound Designer',
+      '   Arun - Developer I',
+      '   Ronnel - Developer II',
     ]
 
     this.textEmotions = {
@@ -61,14 +64,13 @@ export default class Intro extends Phaser.State {
     this.game.add.button(this.game.world.width - 150, this.game.world.height - 85, Images.SpritesheetsTitle.getName(), this.goBack, this, 2, 1, 0)
     this.skipKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
 
-    this.textObject = this.game.add.text(140, 32, '', { font: '18px Anonymous Pro', fill: '#58e1cf' })
+    this.textObject = this.game.add.text(140, 32, '', { font: '20px Anonymous Pro', fill: '#58e1cf' })
     this.characterHead = this.game.add.sprite(16, 64, Images.ImagesAva1Normal.getName())
-    this.game.add.text(this.characterHead.x, this.characterHead.y + 50, 'Ranjana', { font: '13px Anonymous Pro', fill: '#aea' })
-    this.game.add.text(this.characterHead.x, this.characterHead.y + 60, 'Amit', { font: '13px Anonymous Pro', fill: '#aea' })
-    this.game.add.text(this.characterHead.x, this.characterHead.y + 70, 'Amar', { font: '13px Anonymous Pro', fill: '#aea' })
-    this.game.add.text(this.characterHead.x, this.characterHead.y + 80, 'Arun', { font: '13px Anonymous Pro', fill: '#aea' })
-    this.game.add.text(this.characterHead.x, this.characterHead.y + 90, 'Julian', { font: '13px Anonymous Pro', fill: '#aea' })
-    this.game.add.text(this.characterHead.x, this.characterHead.y + 100, 'Ronnel', { font: '13px Anonymous Pro', fill: '#aea' })
+    /*
+    this.game.add.text(this.characterHead.x, this.characterHead.y + 50, 'Ava', { font: '13px Anonymous Pro', fill: '#aea' })
+    this.game.add.text(this.characterHead.x, this.characterHead.y + 60, 'Shop Manager', { font: '13px Anonymous Pro', fill: '#aea' })
+    this.game.add.text(this.characterHead.x, this.characterHead.y + 70, 'Lvl 20 Mechanic', { font: '13px Anonymous Pro', fill: '#aea' })
+    */
     this.nextLine()
   }
 
@@ -107,10 +109,9 @@ export default class Intro extends Phaser.State {
     this.characterHead.loadTexture(this.textEmotions[lineIdx])//pru
   }
 
-  /*
-  private countdownToStart(): void {
+  /*private countdownToStart(): void {
     this.startLevelCounter = this.game.add.text(this.game.world.centerX, this.game.world.centerY, this.countdownNumber.toString(), { font: '82px Anonymous Pro', fill: '#fff' })
-
+  
     const tween = this.game.add.tween(this.startLevelCounter).to(
       {alpha: 0}, 1000, Phaser.Easing.Linear.None, true, 0, 0, false
     )
@@ -122,6 +123,5 @@ export default class Intro extends Phaser.State {
       else
         this.countdownToStart()
     })
-  }
-  */
+  }*/
 }

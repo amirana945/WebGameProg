@@ -11,8 +11,8 @@ import {randomYPos, randomXPos} from '../../utils/gamehelpers'
 import { Sprite } from 'phaser-ce';
 
 export default class LevelTwo extends Phaser.State {
-  readonly BROKEN_CNT = 30
-  readonly FEEDS_CNT = 15
+  readonly BROKEN_CNT = 50
+  readonly FEEDS_CNT = 10
   readonly TIME_LMT = 90
   private intervalFunc = null
   private gameResult = 'ready'//'success', 'failed'
@@ -82,7 +82,7 @@ export default class LevelTwo extends Phaser.State {
       this.broken.body.collideWorldBounds = true      
 
       this.broken.body.allowGravity = false
-      this.broken.body.gravity.y = 50
+      this.broken.body.gravity.y = 100
       if(i % 2){
         this.broken.scale.y = -1
       }

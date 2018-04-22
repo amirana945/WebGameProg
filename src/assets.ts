@@ -231,10 +231,25 @@ export namespace Images {
 
         static getPNG(): string { return require('assets/spritesheets/instruction.png'); }
     }
+    export class SpritesheetsLogo1 {
+        static getName(): string { return 'logo1'; }
+
+        static getPNG(): string { return require('assets/spritesheets/logo1.png'); }
+    }
+    export class SpritesheetsLogo2 {
+        static getName(): string { return 'logo2'; }
+
+        static getPNG(): string { return require('assets/spritesheets/logo2.png'); }
+    }
     export class SpritesheetsScattererPowerup {
         static getName(): string { return 'scatterer_powerup'; }
 
         static getPNG(): string { return require('assets/spritesheets/scatterer_powerup.png'); }
+    }
+    export class SpritesheetsSmallGamindustriLogo {
+        static getName(): string { return 'smallGamindustriLogo'; }
+
+        static getPNG(): string { return require('assets/spritesheets/smallGamindustriLogo.png'); }
     }
     export class SpritesheetsSmilingship {
         static getName(): string { return 'smilingship'; }
@@ -250,6 +265,11 @@ export namespace Images {
         static getName(): string { return 'startgame2'; }
 
         static getPNG(): string { return require('assets/spritesheets/startgame2.png'); }
+    }
+    export class SpritesheetsTitle {
+        static getName(): string { return 'title'; }
+
+        static getPNG(): string { return require('assets/spritesheets/title.png'); }
     }
     export class SpritesheetsTryagain2 {
         static getName(): string { return 'tryagain2'; }

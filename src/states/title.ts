@@ -5,6 +5,8 @@ export default class Title extends Phaser.State {
   private backgroundTemplateSprite: Phaser.TileSprite = null
   private sfxAudiosprite: Phaser.AudioSprite = null
   private startKey: Phaser.Key
+  private instructionKey: Phaser.Key
+  private creditKey: Phaser.Key
   private aboutInfo: string[]
 
   // This is any[] not string[] due to a limitation in TypeScript at the moment;
@@ -22,24 +24,26 @@ export default class Title extends Phaser.State {
     )
 
     // About text
-    this.aboutInfo = [
-      '\"TypescriptMonkey\"',
-      '  By Balloo\'\s Bananas, ',
-      '  Background Art - Free Resource',
-      '  Monkey and others - Free Resource',
-      '  @Copyright'
+    this.aboutInfo = [      
+      'By GameIndustri'      
     ]
 
-    const startY = (this.game.world.height - this.aboutInfo.length * 10) - 20
+    const startY = (this.game.world.height - this.aboutInfo.length * 15) - 30
     for (let i = 0; i < this.aboutInfo.length; i++) {
       const offset: number = i * 10
-      this.game.add.text(16, startY + offset, this.aboutInfo[i], { font: '13px Anonymous Pro', fill: '#aea' })
-    }
+      this.game.add.text(30, startY + offset, this.aboutInfo[i], 
+      { font: '18px Verdana', 
+      fill: 'black', backgroundColor: 'White',
+      fontStyle: 'Italic', fontWeight: '2px', 
+      shadowColor: 'black' }
+    )}
 
     // Init Game Manager
     GameManager.Instance.initBulletFilters(this.game)
 
     this.startKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
+    this.instructionKey = this.game.input.keyboard.addKey(Phaser.Keyboard.CAPS_LOCK)
+    this.creditKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT)
     this.sfxAudiosprite = this.game.add.audioSprite(Assets.Audiosprites.AudiospritesSfx.getName())
 
     // This is an example of how you can lessen the verbosity
@@ -61,15 +65,23 @@ export default class Title extends Phaser.State {
       this.sfxAudiosprite.play(Phaser.ArrayUtils.getRandomItem(this.sfxLaserSounds))
     });
 
-    this.game.add.button(this.game.world.centerX, this.game.world.centerY - 80, Assets.Images.SpritesheetsStartgame2.getName(), this.goNext, this, 2, 1, 0)
-    //this.game.add.button(this.game.world.centerX, this.game.world.centerY - 0, Assets.Images.SpritesheetsInstruction.getName(), this.goInstruction, this, 2, 1, 0)
-    //this.game.add.button(this.game.world.centerX, this.game.world.centerY + 80, Assets.Images.SpritesheetsCredit.getName(), this.goCredit, this, 2, 1, 0)
+    this.game.add.image(this.game.world.centerX - 650, this.game.world.centerY - 475, Assets.Images.SpritesheetsLogo1.getName())
+
+    this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY - 65, Assets.Images.SpritesheetsStartgame2.getName(), this.goNext, this, 2, 1, 0)
+    this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY - 15, Assets.Images.SpritesheetsInstruction.getName(), this.goInstruction, this, 2, 1, 0)
+    this.game.add.button(this.game.world.centerX - 60, this.game.world.centerY + 40, Assets.Images.SpritesheetsCredit.getName(), this.goCredit, this, 2, 1, 0)
     this.game.camera.flash(0x000000, 1000)
   }
 
   public update(): void {
     if (this.startKey.isDown) {
       this.goNext()
+    }
+    else if (this.instructionKey.isDown) {
+      this.goInstruction()
+    }
+    else if (this.creditKey.isDown) {
+      this.goCredit()
     }
   }
 
@@ -79,10 +91,12 @@ export default class Title extends Phaser.State {
     //this.game.state.start('intro')
   }
   private goInstruction(): void {
-    
+    GameManager.Instance.currentLevelNum = 0
+    this.game.state.start('intro')
   }
   private goCredit(): void {
-    
+    GameManager.Instance.currentLevelNum = 0
+    this.game.state.start('credit')
   }
 
 }

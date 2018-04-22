@@ -11,8 +11,8 @@ import {randomYPos, randomXPos} from '../../utils/gamehelpers'
 import { Sprite } from 'phaser-ce';
 
 export default class LevelThree extends Phaser.State {
-  readonly BROKEN_CNT = 40
-  readonly FEEDS_CNT = 15
+  readonly BROKEN_CNT = 4
+  readonly FEEDS_CNT = 5
   readonly TIME_LMT = 90
   private intervalFunc = null
   private gameResult = 'ready'//'success', 'failed'

@@ -82,7 +82,7 @@ export default class Player extends Phaser.Sprite {
     this.anchor.setTo(-0.4, 1.2)
  
     this.body.bounce.y = 1;
-    this.body.gravity.y = 2000;
+    this.body.gravity.y = 3000;
 
     this.body.hitPlatform = false;
     this.body.jumptimeStart = -1
@@ -186,7 +186,7 @@ export default class Player extends Phaser.Sprite {
     }
 
     if (shootKeys[0].isDown || shootKeys[1].isDown) {
-      if (GameManager.Instance.currentLevelNum === 3) {    
+      if (GameManager.Instance.currentLevelNum == 3){    
   
           this.handleFire()
 
